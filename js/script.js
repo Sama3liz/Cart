@@ -41,6 +41,7 @@ window.onload = function () {
   const DOMcarrito = document.querySelector('#carrito');
   const DOMtotal = document.querySelector('#total');
   const DOMbotonVaciar = document.querySelector('#boton-vaciar');
+  const DOMbotonBuscar = document.querySelector('#boton-buscar')
 
   // Funciones
 
@@ -184,5 +185,23 @@ window.onload = function () {
   // Inicio
   renderizarProductos();
 
+  $(document).ready(function () {
+
+    $('#filtrar').keyup(function () {
+
+      var rex = new RegExp($(this).val());
+
+      $('.buscar div').hide();
+
+      $('.buscar div').filter(function () {
+        return rex.test($(this).text());
+      }).show();
+
+    })
+
+  });
+
 
 } 
+
+
